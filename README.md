@@ -4,7 +4,7 @@
 
 This was created during my time as a student at Code Chrysalis. My graphic card was broken. So I couldn’t play LOL (League of Legends) and I joined coding bootcamp. I didn’t have enough time to play the game. I missed all the champions. Creating LOL REST api to get the champions’ information is the way to see them. This is why I choose the data.
 
-This api provides simple information about LOL champions. I used data from https://github.com/ngryman/lol-champions to build api server. This api supports HTTP GET, POST, PATCH, DELETE. Please be careful manipulate the data. the data is stored in firebase. I'm newb using firebase and I failed to deploy my server🔥🔥🔥. Please wait until I will have completed the deploy. Now the api provides champions basic information **ONLY**
+This api provides simple information about LOL champions. I used data from https://github.com/ngryman/lol-champions to build api server. This api supports HTTP GET, POST, PATCH, DELETE. Please be careful manipulate the data. the data is stored in firebase. I'm newb using firebase and I failed to deploy my server🔥🔥🔥. Please wait until completing the deploy. Now the api provides champions basic information **ONLY**
 
 ## Resource Lists and Pagination
 
