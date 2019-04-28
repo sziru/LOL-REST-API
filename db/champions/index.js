@@ -21,7 +21,8 @@ class Champions {
           snapshot.forEach(child => {
             rows.push({ ...child.val(), d_id: child.key });
           });
-          res.send(rows.reverse().slice(start, offset));
+          let result = rows.reverse().slice(start, offset);
+          res.send(result);
         },
         err => {
           throw err;
@@ -37,7 +38,7 @@ class Champions {
       .once(
         "value",
         snapshot => {
-          res.status = 200;
+          res.status = "success";
           const row = [];
           snapshot.forEach(child => {
             row.push({ ...child.val(), d_id: child.key });
@@ -58,12 +59,12 @@ class Champions {
       .once(
         "value",
         snapshot => {
-          res.status = 200;
           const row = [];
           snapshot.forEach(child => {
             row.push({ ...child.val(), d_id: child.key });
           });
-          res.status = 200;
+          res.status = "success";
+          res.statusCode = 200;
           res.send(row);
         },
         err => {
@@ -79,7 +80,6 @@ class Champions {
       .once(
         "value",
         snapshot => {
-          res.status = 200;
           const row = [];
 
           snapshot.forEach(child => {
@@ -91,7 +91,8 @@ class Champions {
               row.push({ ...child.val(), d_id: child.key });
             }
           });
-          res.status = 200;
+          res.status = "success";
+          res.statusCode = 200;
           res.send(row);
         },
         err => {
@@ -107,20 +108,25 @@ class Champions {
       .ref("champions/" + key)
       .update(data)
       .then(() => {
-        res.status = 200;
-        res.send("success!");
+        res.status = "success";
+        res.statusCode = 200;
+        res.send(res.status);
       })
       .catch(err => {
-        res.status = 400;
+        res.status = "failed";
         throw err;
       });
-  }
-
-  insert(res, data) {
-    return db
+    }
+    
+    insert(res, data) {
+      return db
       .ref("champions")
       .push(data)
-      .then(() => res.send("success!"))
+      .then(() => {
+        res.status = "success";
+        res.statusCode = 201;
+        res.send(res.status)
+      })
       .catch(err => {
         throw err;
       });
@@ -134,7 +140,8 @@ class Champions {
       .once(
         "value",
         snapshot => {
-          res.status = 200;
+          res.status = "success";
+          res.statusCode = 200;
           const row = [];
           snapshot.forEach(child => {
             row.push(child.key);
@@ -145,11 +152,12 @@ class Champions {
             })
           )
             .then(() => {
-              res.status = 200;
-              res.send("success!");
+              res.status = "success";
+              res.statusCode = 200;
+              res.send(res.status);
             })
             .catch(err => {
-              res.status = 404;
+              res.status = "failed";
               throw err;
             });
         },
@@ -167,7 +175,8 @@ class Champions {
       .once(
         "value",
         snapshot => {
-          res.status = 200;
+          res.status = "success";
+          res.statusCode = 200;
           const row = [];
           snapshot.forEach(child => {
             row.push(child.key);
@@ -178,11 +187,12 @@ class Champions {
             })
           )
             .then(() => {
-              res.status = 200;
-              res.send("success!");
+              res.status = "success";
+              res.statusCode = 200;
+              res.send(res.status);
             })
             .catch(err => {
-              res.status = 404;
+              res.status = "failed";
               throw err;
             });
         },
